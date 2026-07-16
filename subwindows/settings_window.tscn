@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://ci05n54e0y4x3"]
+
+[ext_resource type="Script" uid="uid://b5njmibr383ja" path="res://subwindows/settings_window.gd" id="1_5s5en"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehwo5"]
+
+[node name="SettingsWindow" type="Window" unique_id=1940455560]
+transparent_bg = true
+oversampling_override = 1.0
+size = Vector2i(512, 512)
+borderless = true
+always_on_top = true
+transparent = true
+script = ExtResource("1_5s5en")
+window_anchor = 9
+metadata/_custom_type_script = "uid://b5njmibr383ja"
+
+[node name="Control" type="Control" parent="." unique_id=751092125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=143081452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehwo5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=1087551871]
+custom_minimum_size = Vector2(218.25, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer" unique_id=205229309]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="AdjustButton" type="Button" parent="Control/ScrollContainer/VBoxContainer" unique_id=735110704]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "ADJUST
+"
+
+[node name="L_MasterVolume" type="Label" parent="Control/ScrollContainer/VBoxContainer" unique_id=1100180478]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+text = "MASTER VOLUME"
+
+[node name="HS_MasterVolume" type="HSlider" parent="Control/ScrollContainer/VBoxContainer/L_MasterVolume" unique_id=638390202]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 14.833332
+offset_right = 150.0
+offset_bottom = 30.833332
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="L_MusicVolume" type="Label" parent="Control/ScrollContainer/VBoxContainer" unique_id=1971603061]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 10)
+offset_transform_visual_only = false
+text = "MUSIC VOLUME"
+
+[node name="HS_MusicVolume" type="HSlider" parent="Control/ScrollContainer/VBoxContainer/L_MusicVolume" unique_id=760931068]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 14.833332
+offset_right = 150.0
+offset_bottom = 30.833332
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="L_SFXVolume" type="Label" parent="Control/ScrollContainer/VBoxContainer" unique_id=1389065658]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+offset_transform_visual_only = false
+text = "SOUND EFFECTS VOLUME"
+
+[node name="HS_SFXVolume" type="HSlider" parent="Control/ScrollContainer/VBoxContainer/L_SFXVolume" unique_id=1640935556]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 14.833333
+offset_right = 150.0
+offset_bottom = 30.833332
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="L_VSync" type="Label" parent="Control/ScrollContainer/VBoxContainer" unique_id=1631090977]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 30)
+offset_transform_visual_only = false
+text = "VSync"
+
+[node name="CB_VSync" type="CheckBox" parent="Control/ScrollContainer/VBoxContainer/L_VSync" unique_id=1689237218]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -11.999667
+offset_right = 51.00003
+offset_bottom = 12.000333
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="L_Screen" type="Label" parent="Control/ScrollContainer/VBoxContainer" unique_id=539260942]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 30)
+offset_transform_visual_only = false
+text = "Screen"
+
+[node name="OB_Screen" type="OptionButton" parent="Control/ScrollContainer/VBoxContainer/L_Screen" unique_id=570587105]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = -9.999667
+offset_right = 125.99984
+offset_bottom = 10.000333
+grow_vertical = 2
+
+[connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/AdjustButton" to="." method="on_adjust_button_pressed"]
+[connection signal="toggled" from="Control/ScrollContainer/VBoxContainer/L_VSync/CB_VSync" to="." method="on_cb_vsync_toggled"]

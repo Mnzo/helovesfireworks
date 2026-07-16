@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://bl7g1q0dco7y0"]
 
+[ext_resource type="Texture2D" uid="uid://bshctdu5t67wi" path="res://icon.svg" id="1_6eklp"]
 [ext_resource type="PackedScene" uid="uid://cw505c1igloni" path="res://utils/fps_counter.tscn" id="1_772xm"]
+[ext_resource type="Script" uid="uid://mdu3nv2f026i" path="res://levels/scripts/test_map.gd" id="1_ask3y"]
+[ext_resource type="PackedScene" uid="uid://dcp4wtyatdtlh" path="res://core/ui/hud_controller.tscn" id="3_ehwo5"]
 
-[node name="TestMap" type="Node" unique_id=4856996]
+[node name="TestMap" type="Node" unique_id=4856996 node_paths=PackedStringArray("hud")]
+script = ExtResource("1_ask3y")
+hud = NodePath("HUDLayer/HUDController")
 
 [node name="Systems" type="Node" parent="." unique_id=1174873568]
 
@@ -12,9 +17,26 @@
 
 [node name="Entities" type="Node2D" parent="World" unique_id=1596938093]
 
+[node name="Camera2D" type="Camera2D" parent="World/Entities" unique_id=257837702]
+
 [node name="Ingredients" type="Node2D" parent="World" unique_id=685029357]
 
+[node name="Sprite2D" type="Sprite2D" parent="World" unique_id=1565092141]
+position = Vector2(257, 429)
+texture = ExtResource("1_6eklp")
+
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1463375348]
+
+[node name="HUDController" parent="HUDLayer" unique_id=1526041812 instance=ExtResource("3_ehwo5")]
+offset_top = -1.0
+offset_bottom = -1.0
+
+[node name="Button" type="Button" parent="HUDLayer" unique_id=770651807]
+offset_left = 106.0
+offset_top = 58.0
+offset_right = 165.0
+offset_bottom = 111.0
+text = "sett"
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=2026716377]
 layer = 2
@@ -26,3 +48,5 @@ layer = 10
 layer = 38
 
 [node name="FPSCounter" parent="DebugLayer" unique_id=1574418818 instance=ExtResource("1_772xm")]
+
+[connection signal="pressed" from="HUDLayer/Button" to="." method="_on_button_pressed"]

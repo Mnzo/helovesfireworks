@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dcp4wtyatdtlh"]
+
+[ext_resource type="Script" uid="uid://bfyd3lh501606" path="res://core/ui/scripts/hud_controller.gd" id="1_udvra"]
+[ext_resource type="Script" uid="uid://wpw6xtpmp8jq" path="res://core/ui/adjust_hud.gd" id="2_hf3k0"]
+[ext_resource type="Texture2D" uid="uid://bshctdu5t67wi" path="res://icon.svg" id="2_j4s6p"]
+
+[node name="HUDController" type="Control" unique_id=1526041812 node_paths=PackedStringArray("adjust_hud")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udvra")
+adjust_hud = NodePath("AdjustHUD")
+
+[node name="AdjustHUD" type="CanvasLayer" parent="." unique_id=804662436]
+visible = false
+script = ExtResource("2_hf3k0")
+
+[node name="Resize" type="TextureButton" parent="AdjustHUD" unique_id=557142584]
+offset_right = 128.0
+offset_bottom = 128.00024
+pivot_offset_ratio = Vector2(0, 0.5)
+texture_normal = ExtResource("2_j4s6p")
+
+[connection signal="button_down" from="AdjustHUD/Resize" to="AdjustHUD" method="on_resize_button_down"]
+[connection signal="button_up" from="AdjustHUD/Resize" to="AdjustHUD" method="on_resize_button_up"]
